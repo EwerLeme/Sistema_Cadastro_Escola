@@ -92,10 +92,7 @@ app.post("/cadastrar-matricula", async (req, res) => {
         }]
     })
     .then( async (dados) => {
-        var vagas = dados[0].turma.vagas
-        var quantiade = dados.length
-        
-        if(quantiade < vagas) {
+        if(dados.length === 0) {
             await matricula.create(req.body)
             .then(() => {
                 return res.redirect('/matricula')
@@ -107,10 +104,26 @@ app.post("/cadastrar-matricula", async (req, res) => {
             })
         }
         else {
-            return res.json({
-                erro: true,
-                mensagem: 'erro: Turma sem vagas!'
-            })
+            var vagas = dados[0].turma.vagas
+            var quantiade = dados.length
+
+            if(quantiade < vagas) {
+                await matricula.create(req.body)
+                .then(() => {
+                    return res.redirect('/matricula')
+                }).catch(() => {
+                    return res.status(400).json({
+                        erro: true,
+                        mensagem: 'erro: matricula não cadastrado com sucesso'
+                    })
+                })
+            }
+            else {
+                return res.json({
+                    erro: true,
+                    mensagem: 'erro: Turma sem vagas!'
+                })
+            }
         }
     }).catch(() => {
         return res.status(400).json({

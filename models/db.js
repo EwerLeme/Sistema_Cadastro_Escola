@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize("escola", process.env.BANCO_NOME, process.env.BANCO_SENHA, {
+const sequelize = new Sequelize(process.env.BANCO_NOME, process.env.BANCO_USER, process.env.BANCO_SENHA, {
     host: process.env.BANCO_HOST,
     dialect: 'mysql'
 });
