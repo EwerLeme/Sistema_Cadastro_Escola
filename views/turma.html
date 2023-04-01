@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="aluno">Cadastrar Aluno</a></li>
+      <li><a href="matricula">Cadastrar Matrícula</a></li>
+      <li><a href="turma">Cadastrar Turma</a></li>
+    </ul>
+  </nav>
+  <h1>Cadastro de Turma</h1>
+  <form action="/cadastrar-turma" method="POST">
+    <label for="descricao">Descriçao:</label>
+    <input type="text" id="descricao" name="descricao" required><br><br>
+
+    <label for="ano">Ano:</label>
+    <input type="text" id="ano" name="ano" required><br><br>
+
+    <label for="vagas">Vagas:</label>
+    <input type="number" id="vagas" name="vagas" required><br><br>
+
+    <input type="submit" value="Cadastrar">
+  </form>
+</body>
+
+</html>
